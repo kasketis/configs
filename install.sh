@@ -17,7 +17,8 @@ read -p "Create link for file: $file? [y/n] "
       yes=false
     fi
   if [ "$yes" = true ]; then
-    echo "Linking file $file: " `ln -v -sf `pwd`/$file ~`
+    printf "Linking file $file: " 
+    ln -v -sf `pwd`/$file ~
     echo ""
   fi
 done
