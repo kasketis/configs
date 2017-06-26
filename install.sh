@@ -4,10 +4,6 @@
 #zsh
 #oh-my-zsh (https://github.com/robbyrussell/oh-my-zsh)
 
-echo "Pulling the repo.."
-git reset --hard
-git pull
-
 echo "Installlation started"
 
 for file in $(ls -a|grep "^\.[a-z]"|grep -v "^\.git$")
