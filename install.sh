@@ -6,7 +6,7 @@
 
 git pull
 
-cd "$(dirname "$0")"
+echo ""
 
 for file in $(ls -a|grep "^\.[a-z]"|grep -v "^\.git$")
 do
@@ -17,7 +17,7 @@ read -p "Create link for file: $file? [y/n] "
       yes=false
     fi
   if [ "$yes" = true ]; then
-    echo "Linking file $file"
-    ln -v -sf `pwd`/$file ~
+    echo "Linking file $file: " `ln -v -sf `pwd`/$file ~`
+    echo ""
   fi
 done
