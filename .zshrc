@@ -16,16 +16,15 @@ alias s='du -sh'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 
 # git aliases
-alias ga='git add'
-alias gaa='git add .'
-alias gc='git commit -m'
-alias gca='git commit -am'
-alias gcl='git clone'
-alias gch='git checkout'
-alias gd='~/.deploy/post-push.sh'
-alias gdf='git diff'
-alias gp='git push'
-alias gs='git status'
+alias add='git add'
+alias commit='git commit -m'
+alias clone='git clone'
+alias checkout='git checkout'
+alias deploy='~/.deploy/post-push.sh'
+alias diff='git diff'
+alias push='git push'
+alias pull='git pull'
+alias status='git status'
 
 
 # show/hide hidden files in Finder
