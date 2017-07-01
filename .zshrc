@@ -10,6 +10,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias bk='cd $OLDPWD'
+alias con='lsof -P -i -n'
 alias lh='ls -a | egrep "^\."'
 alias rmf='rm -f'
 alias s='du -sh'
@@ -22,6 +23,7 @@ alias clone='git clone'
 alias checkout='git checkout'
 alias deploy='~/.deploy/post-push.sh'
 alias diff='git diff'
+alias log='git log --graph --pretty=format:"%C(yellow)%h%Creset %C(green)(%cr) %C(red)%d%Creset %s %C(cyan)<%an>%Creset" --abbrev-commit'
 alias merge='git merge'
 alias push='git push'
 alias pull='git pull'
@@ -63,3 +65,23 @@ function gi() { curl -s -L http://www.gitignore.io/api/$@ >> .gitignore ;}
 
 # generate random 12-16 digits passwords
 function randpass() { digits=$((12 + RANDOM % 5)); for i in {1..5}; do LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c $digits | xargs; done }
+
+#function translate() {
+ #   curl "http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=$1&langpair=$2|${3:-en}" | sed 's/.*"translatedText":"\([^"]*\)".*}/\1\n/'
+#}
+
+# print help
+function help()
+{
+    echo "generic aliases"
+    echo "---------------"
+    echo " ..\n ...\n ....\n bk\n con\n lh\n rmf\n s\n ttop"
+    echo
+    echo "git aliases"
+    echo "-----------"
+    echo " add\n commit\n clone\n checkout\n deploy\n diff\n log\n merge\n push\n pull\n status"
+    echo
+    echo "functions"
+    echo "---------"
+    echo " showh\n hideh\n showd\n hideh\n nicemount\n myip\n server\n gi\n randpass\n help"
+}
