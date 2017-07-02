@@ -117,7 +117,7 @@ function randpass() { digits=$((12 + RANDOM % 5)); for i in {1..5}; do LC_CTYPE=
 function pk() 
 {
     echo "Packing $1 ..."
-    if [[ $1 ]]; then
+    if [ $1 ]; then
         case $1 in
             tbz)       tar cjvf $2.tar.bz2 $2 ;;
             tgz)       tar czvf $2.tar.gz  $2 ;;
@@ -137,7 +137,7 @@ function pk()
 function extract () 
 {
     echo "Extracting $1 ..."
-    if [[ -f $1 ]]; then
+    if [ -f $1 ]; then
         case $1 in
             *.tar.bz2)   tar xjf $1 ;;
             *.tar.gz)    tar xzf $1 ;;
