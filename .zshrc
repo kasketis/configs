@@ -23,6 +23,7 @@ alias clone='git clone'
 alias checkout='git checkout'
 alias deploy='~/.deploy/post-push.sh'
 alias diff='git diff'
+alias info='echo `git config --local remote.origin.url`'  
 alias log='git log --graph --pretty=format:"%C(yellow)%h%Creset %C(green)(%cr) %C(red)%d%Creset %s %C(cyan)<%an>%Creset" --abbrev-commit'
 alias merge='git merge'
 alias push='git push'
@@ -138,7 +139,7 @@ function help()
     echo
     echo "git aliases"
     echo "-----------"
-    echo " add\n commit\n clone\n checkout\n deploy\n diff\n log\n merge\n push\n pull\n status"
+    echo " add\n commit\n clone\n checkout\n deploy\n diff\n info\n log\n merge\n push\n pull\n status"
     echo
     echo "functions"
     echo "---------"
