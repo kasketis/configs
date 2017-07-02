@@ -32,7 +32,15 @@ alias status='git status'
 
 
 # safe remove
-function rm() { mkdir -p ~/.Trash && mv $1 ~/.Trash/$1\-\-`date +%Y-%m-%d:%H:%M:%S` }
+function rm() 
+{ 
+    mkdir -p ~/.Trash
+    if [[ -f ~/.Trash/$1 ]] || [[ -d ~/.Trash/$1 ]]; then
+        mv $1 ~/.Trash/$1\-\-`date +%Y-%m-%d:%H:%M:%S`
+    else
+        mv $1 ~/.Trash/$1
+    fi  
+}
 
 # empty trash
 function rmtrash()
