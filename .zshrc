@@ -32,11 +32,13 @@ alias status='git status'
 
 
 # safe remove
-function rm() { mv $1 ~/.Trash/$1\-\-`date +%Y-%m-%d:%H:%M:%S` }
+function rm() { mkdir -p ~/.Trash && mv $1 ~/.Trash/$1\-\-`date +%Y-%m-%d:%H:%M:%S` }
 
 # empty trash
 function rmtrash()
 { 
+    l ~/.Trash
+    echo
     local go_ahead
     read -q "go_ahead?Are you sure want to empty trash? [y/n] "
     echo
