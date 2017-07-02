@@ -10,6 +10,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias bk='cd $OLDPWD'
+alias cl="clear"
 alias con='lsof -P -i -n'
 alias lh='ls -a | egrep "^\."'
 alias s='du -sh'
