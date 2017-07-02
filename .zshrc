@@ -13,7 +13,6 @@ alias bk='cd $OLDPWD'
 alias cl="clear"
 alias con='lsof -P -i -n'
 alias lh='ls -a | egrep "^\."'
-alias rm="mv $1 ~/.trash/$1-`date +%Y-%m-%d:%H:%M:%S`"
 alias s='du -sh'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 
@@ -31,6 +30,8 @@ alias push='git push'
 alias pull='git pull'
 alias status='git status'
 
+# safe remove
+function rm() { mv $1 ~/.Trash/$1 \- `date +%Y-%m-%d:%H:%M:%S` }
 
 # myIP address
 function myip() 
@@ -99,7 +100,7 @@ function extract ()
             *.zip)       unzip $1 ;;
             *.Z)         uncompress $1 ;;
             *.7z)        7z x $1 ;;
-            *)            echo "'$1' cannot be extracted via extract()" ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
         esac
     else
         echo "'$1' is not a valid file"
@@ -122,7 +123,7 @@ function help()
 {
     echo "generic aliases"
     echo "---------------"
-    echo " ..\n ...\n ....\n bk\n con\n lh\n rm\n s\n ttop"
+    echo " ..\n ...\n ....\n bk\n con\n lh\n s\n ttop"
     echo
     echo "git aliases"
     echo "-----------"
@@ -130,5 +131,5 @@ function help()
     echo
     echo "functions"
     echo "---------"
-    echo " myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
+    echo " rm\n myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
