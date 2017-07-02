@@ -30,6 +30,35 @@ alias push='git push'
 alias pull='git pull'
 alias status='git status'
 
+# suffix alias
+alias -s html=vim
+alias -s php=vim
+alias -s css=vim
+alias -s js=vim
+alias -s py=vim
+alias -s sql=vim
+alias -s cpp=vim
+alias -s c=vim
+alias -s h=vim
+alias -s txt=vim
+alias -s log=tail
+alias -s sh=vim
+
+
+# run
+function run()
+{
+    echo "Running $1 ..."
+    if [[ -f $1 ]]; then
+        case $1 in
+            *.sh)       /bin/sh $1 ;;
+            *.py)       python $1 ;;
+            *)          echo "'$1' cannot be runned via run()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
 
 # safe remove
 function rm() 
@@ -88,7 +117,7 @@ function randpass() { digits=$((12 + RANDOM % 5)); for i in {1..5}; do LC_CTYPE=
 function pk() 
 {
     echo "Packing $1 ..."
-    if [ $1 ] ; then
+    if [[ $1 ]]; then
         case $1 in
             tbz)       tar cjvf $2.tar.bz2 $2 ;;
             tgz)       tar czvf $2.tar.gz  $2 ;;
@@ -108,7 +137,7 @@ function pk()
 function extract () 
 {
     echo "Extracting $1 ..."
-    if [ -f $1 ] ; then
+    if [[ -f $1 ]]; then
         case $1 in
             *.tar.bz2)   tar xjf $1 ;;
             *.tar.gz)    tar xzf $1 ;;
@@ -153,5 +182,5 @@ function help()
     echo
     echo "functions"
     echo "---------"
-    echo " rm\n rmtrash\n myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
+    echo " run\n rm\n rmtrash\n myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
