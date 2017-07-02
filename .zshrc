@@ -70,7 +70,6 @@ function randpass() { digits=$((12 + RANDOM % 5)); for i in {1..5}; do LC_CTYPE=
  #   curl "http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=$1&langpair=$2|${3:-en}" | sed 's/.*"translatedText":"\([^"]*\)".*}/\1\n/'
 #}
 
-
 # make a package
 function pk() 
 {
@@ -90,7 +89,6 @@ function pk()
         echo "'$1' is not a valid file"
     fi
 }
-
 
 # extract a packed file
 function extract () 
