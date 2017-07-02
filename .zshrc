@@ -30,8 +30,20 @@ alias push='git push'
 alias pull='git pull'
 alias status='git status'
 
+
 # safe remove
 function rm() { mv $1 ~/.Trash/$1\-\-`date +%Y-%m-%d:%H:%M:%S` }
+
+# empty trash
+function rmtrash()
+{ 
+    local go_ahead
+    read -q "go_ahead?Are you sure want to empty trash? [y/n] "
+    echo
+    if [[ "$go_ahead" = "y" ]]; then
+        command rm -rf ~/.Trash/* #execute real rm
+    fi
+}
 
 # myIP address
 function myip() 
@@ -131,5 +143,5 @@ function help()
     echo
     echo "functions"
     echo "---------"
-    echo " rm\n myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
+    echo " rm\n rmtrash\n myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
