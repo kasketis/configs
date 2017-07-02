@@ -21,7 +21,7 @@ alias add='git add'
 alias commit='git commit -m'
 alias clone='git clone'
 alias checkout='git checkout'
-alias deploy='~/.deploy/post-push.sh'
+alias deploy='run ~/.deploy/post-push.sh'
 alias diff='git diff'
 alias info='echo `git config --local remote.origin.url`'  
 alias log='git log --graph --pretty=format:"%C(yellow)%h%Creset %C(green)(%cr) %C(red)%d%Creset %s %C(cyan)<%an>%Creset" --abbrev-commit'
@@ -158,13 +158,17 @@ function extract ()
     fi
 } 
 
+# enable/disable Apache site
+function sitee() { sudo a2ensite $1; sudo service apache2 restart; }
+function sited() { sudo a2dissite $1; sudo service apache2 restart; }
+
 # show/hide hidden files in Finder
-function showh() { defaults write com.apple.Finder AppleShowAllFiles YES ; }
-function hideh() { defaults write com.apple.Finder AppleShowAllFiles NO ; }
+function showh() { defaults write com.apple.Finder AppleShowAllFiles YES; }
+function hideh() { defaults write com.apple.Finder AppleShowAllFiles NO; }
  
 # show/hide icons on Desktop
-function showd() { defaults write com.apple.finder CreateDesktop -bool true ; killall Finder /System/Library/CoreServices/Finder.app;}
-function hided() { defaults write com.apple.finder CreateDesktop -bool false ; killall Finder /System/Library/CoreServices/Finder.app;}
+function showd() { defaults write com.apple.finder CreateDesktop -bool true ; killall Finder /System/Library/CoreServices/Finder.app; }
+function hided() { defaults write com.apple.finder CreateDesktop -bool false ; killall Finder /System/Library/CoreServices/Finder.app; }
  
 # displays mounted drive information in a nicely formatted manner
 function nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2="";1') | column -t ; }
@@ -182,5 +186,5 @@ function help()
     echo
     echo "functions"
     echo "---------"
-    echo " run\n rm\n rmtrash\n myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
+    echo " run\n rm\n rmtrash\n myip\n server\n gi\n randpass\n pk\n extract\n sitee\n sited\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
