@@ -51,7 +51,7 @@ function run()
     echo "Running $1 ..."
     if [[ -f $1 ]]; then
         case $1 in
-            *.sh)       /bin/sh $1 ;;
+            *.sh)       /bin/bash $1 ;;
             *.py)       python $1 ;;
             *)          echo "'$1' cannot be runned via run()" ;;
         esac
