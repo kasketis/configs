@@ -13,7 +13,7 @@ alias bk='cd $OLDPWD'
 alias cl="clear"
 alias con='lsof -P -i -n'
 alias lh='ls -a | egrep "^\."'
-alias rm="mv -t ~/.trash"
+alias rm="mv $1 ~/.trash/$1-`date +%Y-%m-%d:%H:%M:%S`"
 alias s='du -sh'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 
