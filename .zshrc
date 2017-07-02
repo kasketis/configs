@@ -31,7 +31,7 @@ alias pull='git pull'
 alias status='git status'
 
 # safe remove
-function rm() { mv $1 ~/.Trash/$1 \- `date +%Y-%m-%d:%H:%M:%S` }
+function rm() { mv $1 ~/.Trash/$1\-\-`date +%Y-%m-%d:%H:%M:%S` }
 
 # myIP address
 function myip() 
