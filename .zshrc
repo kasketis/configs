@@ -12,7 +12,6 @@ alias ....='cd ../../..'
 alias bk='cd $OLDPWD'
 alias con='lsof -P -i -n'
 alias lh='ls -a | egrep "^\."'
-alias rmf='rm -f'
 alias s='du -sh'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 
@@ -30,16 +29,19 @@ alias pull='git pull'
 alias status='git status'
 
 
-# show/hide hidden files in Finder
-function showh() { defaults write com.apple.Finder AppleShowAllFiles YES ; }
-function hideh() { defaults write com.apple.Finder AppleShowAllFiles NO ; }
-
-# show/hide icons on Desktop
-function showd() { defaults write com.apple.finder CreateDesktop -bool true ; killall Finder /System/Library/CoreServices/Finder.app;}
-function hided() { defaults write com.apple.finder CreateDesktop -bool false ; killall Finder /System/Library/CoreServices/Finder.app;}
-
-# displays mounted drive information in a nicely formatted manner
-function nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2="";1') | column -t ; }
+# force delete a file or directory
+function rmf()
+{
+    if [[ -d $1 ]]; then
+        rm -rf $1       
+    elif [[ -f $1 ]]; then
+        rm -f $1
+    else
+        echo "$1 is not a valid file or directory"
+        exit 1
+    fi
+} 
+compdef $_comps[rm] rmf
 
 # myIP address
 function myip() 
@@ -115,6 +117,17 @@ function extract ()
     fi
 } 
 
+# show/hide hidden files in Finder
+function showh() { defaults write com.apple.Finder AppleShowAllFiles YES ; }
+function hideh() { defaults write com.apple.Finder AppleShowAllFiles NO ; }
+ 
+# show/hide icons on Desktop
+function showd() { defaults write com.apple.finder CreateDesktop -bool true ; killall Finder /System/Library/CoreServices/Finder.app;}
+function hided() { defaults write com.apple.finder CreateDesktop -bool false ; killall Finder /System/Library/CoreServices/Finder.app;}
+ 
+# displays mounted drive information in a nicely formatted manner
+function nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2="";1') | column -t ; }
+
 # print help
 function help()
 {
@@ -128,5 +141,5 @@ function help()
     echo
     echo "functions"
     echo "---------"
-    echo " showh\n hideh\n showd\n hideh\n nicemount\n myip\n server\n gi\n randpass\n pk\n extract\n help"
+    echo " rmf\n myip\n server\n gi\n randpass\n pk\n extract\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
