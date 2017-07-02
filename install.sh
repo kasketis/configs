@@ -12,7 +12,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "oh-my-zsh installation finished."
 fi
 
-for file in $(ls -a|grep "^\.[a-z]"|grep -v "^\.git$")
+for file in $(ls -a | grep "^\.[a-z]" | grep -v "^\.git.*")
 do
 read -p "Create link for file: $file? [y/n] "
     if [[ $REPLY =~ ^[Yy]$ ]]; then
