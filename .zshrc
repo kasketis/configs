@@ -199,5 +199,5 @@ function help()
     echo
     echo "functions"
     echo "---------"
-    echo " run\n rm\n rmtrash\n buildj\n myip\n server\n gi\n randpass\n pk\n extract\n sitee\n sited\n showh\n hideh\n showd\n hideh\n nicemount\n help"
+    echo " run\n rm\n rmtrash\n build\n myip\n server\n gi\n randpass\n pk\n extract\n sitee\n sited\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
