@@ -19,10 +19,12 @@ alias ttop='top -ocpu -R -F -s 2 -n30'
 # git aliases
 alias add='git add'
 alias commit='git commit -m'
+alias clean='git clean -f -d'
 alias clone='git clone'
 alias checkout='git checkout'
-alias deploy='run ~/.deploy/post-push.sh'
+alias deploy='run ~/.bots/deploy/vps-deploy-bot.sh'
 alias diff='git diff'
+alias fetch='git fetch'
 alias info='echo `git config --local remote.origin.url`'  
 alias log='git log --graph --pretty=format:"%C(yellow)%h%Creset %C(green)(%cr) %C(red)%d%Creset %s %C(cyan)<%an>%Creset" --abbrev-commit'
 alias merge='git merge'
@@ -45,14 +47,17 @@ alias -s log=tail
 alias -s sh=vim
 
 
+# reload zsh
+function zshreload() { source ~/.zshrc }
+
 # run
 function run()
 {
     echo "Running $1 ..."
     if [[ -f $1 ]]; then
         case $1 in
-            *.sh)       /bin/bash $1 ;;
-            *.py)       python $1 ;;
+            *.sh)       /bin/bash $1 $2 $3 $4 $5;;
+            *.py)       python $1 $2 $3 ;;
             *)          echo "'$1' cannot be runned via run()" ;;
         esac
     else
@@ -83,6 +88,14 @@ function rmtrash()
         command rm -rf ~/.Trash/* #execute real rm
     fi
 }
+
+# build on jenkins
+function build() 
+{ 
+    local gitrepo=$(basename `git config --local remote.origin.url`)
+    local gitbranch=$(git rev-parse --abbrev-ref HEAD)
+    run ~/.bots/build/jenkins-build-bot/jenkins-build-bot.sh $gitrepo $gitbranch $1 $2; 
+} 
 
 # myIP address
 function myip() 
@@ -167,8 +180,8 @@ function showh() { defaults write com.apple.Finder AppleShowAllFiles YES; }
 function hideh() { defaults write com.apple.Finder AppleShowAllFiles NO; }
  
 # show/hide icons on Desktop
-function showd() { defaults write com.apple.finder CreateDesktop -bool true ; killall Finder /System/Library/CoreServices/Finder.app; }
-function hided() { defaults write com.apple.finder CreateDesktop -bool false ; killall Finder /System/Library/CoreServices/Finder.app; }
+function showd() { defaults write com.apple.finder CreateDesktop -bool true; killall Finder /System/Library/CoreServices/Finder.app; }
+function hided() { defaults write com.apple.finder CreateDesktop -bool false; killall Finder /System/Library/CoreServices/Finder.app; }
  
 # displays mounted drive information in a nicely formatted manner
 function nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2="";1') | column -t ; }
@@ -186,5 +199,5 @@ function help()
     echo
     echo "functions"
     echo "---------"
-    echo " run\n rm\n rmtrash\n myip\n server\n gi\n randpass\n pk\n extract\n sitee\n sited\n showh\n hideh\n showd\n hideh\n nicemount\n help"
+    echo " run\n rm\n rmtrash\n buildj\n myip\n server\n gi\n randpass\n pk\n extract\n sitee\n sited\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
