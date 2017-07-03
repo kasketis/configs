@@ -22,3 +22,6 @@ read -p "Create link for file: $file? [y/n] "
         echo "" 
     fi
 done
+
+# copy themes
+cp -rf .zsh_custom/themes/* ~/.oh-my-zsh/themes/
