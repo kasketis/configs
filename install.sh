@@ -1,8 +1,9 @@
 #!/bin/bash
 
-#prereqs
-#zsh
-#oh-my-zsh (https://github.com/robbyrussell/oh-my-zsh)
+# prereqs
+# zsh
+# oh-my-zsh (https://github.com/robbyrussell/oh-my-zsh)
+# chsh -s $(which zsh) to set zsh as login shell
 
 echo "Script started"
 
@@ -19,9 +20,12 @@ read -p "Create link for file: $file? [y/n] "
         echo "Linking file $file: " 
         cp ~/$file ~/$file".old" 2>>/dev/null #backup old 
         ln -v -sf `pwd`/$file ~
-        echo "" 
+        echo
     fi
 done
 
 # copy themes
 cp -rf .zsh_custom/themes/* ~/.oh-my-zsh/themes/
+echo "Themes copied"
+echo 
+echo "You are ready to go!"
