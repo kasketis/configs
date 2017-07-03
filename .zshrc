@@ -13,7 +13,7 @@ alias bk='cd $OLDPWD'
 alias cl="clear"
 alias con='lsof -P -i -n'
 alias lh='ls -a | egrep "^\."'
-alias s='du -sh'
+alias s='du -sh *'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 
 # git aliases
@@ -46,9 +46,6 @@ alias -s txt=vim
 alias -s log=tail
 alias -s sh=vim
 
-
-# reload zsh
-function zshreload() { source ~/.zshrc }
 
 # run
 function run()
