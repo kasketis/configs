@@ -53,7 +53,7 @@ function run()
     echo "Running $1 ..."
     if [[ -f $1 ]]; then
         case $1 in
-            *.sh)       /bin/bash $1 $2 $3 $4 $5;;
+            *.sh)       /bin/bash $1 $2 $3 $4 $5 $6;;
             *.py)       python $1 $2 $3 ;;
             *)          echo "'$1' cannot be runned via run()" ;;
         esac
@@ -91,7 +91,7 @@ function build()
 { 
     local gitrepo=$(basename `git config --local remote.origin.url`)
     local gitbranch=$(git rev-parse --abbrev-ref HEAD)
-    run ~/.bots/build/jenkins-build-bot/jenkins-build-bot.sh $gitrepo $gitbranch $1 $2; 
+    run ~/.bots/build/jenkins-build-bot/jenkins-build-bot.sh $gitrepo $gitbranch $1 $2 $3; 
 } 
 
 # myIP address
