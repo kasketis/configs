@@ -60,7 +60,22 @@ function run()
         case $1 in
             *.sh)       /bin/bash $1 $2 $3 $4 $5 $6;;
             *.py)       python $1 $2 $3 ;;
+            *.yaml)     docker-compose -f $1 up -d $2 $3;;
             *)          echo "'$1' cannot be runned via run()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# stop
+function stop()
+{
+    echo "Stopping $1 ..."
+    if [[ -f $1 ]]; then
+        case $1 in
+            *.yaml)     docker-compose -f $1 down $2 $3;;
+            *)          echo "'$1' cannot be runned via stop()" ;;
         esac
     else
         echo "'$1' is not a valid file"
@@ -198,8 +213,11 @@ function help()
     echo "git aliases"
     echo "-----------"
     echo " add\n commit\n clone\n checkout\n deploy\n diff\n info\n log\n merge\n push\n pull\n status"
+    echo "docker aliases"
+    echo "-----------"
+    echo " dkls\n dkst\n dkrm"
     echo
     echo "functions"
     echo "---------"
-    echo " run\n rm\n rmtrash\n build\n myip\n server\n gi\n randpass\n pk\n extract\n sitee\n sited\n showh\n hideh\n showd\n hideh\n nicemount\n help"
+    echo " run\n stop\n rm\n rmtrash\n build\n myip\n server\n gi\n randpass\n pk\n extract\n sitee\n sited\n showh\n hideh\n showd\n hideh\n nicemount\n help"
 }
