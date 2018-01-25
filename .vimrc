@@ -1,4 +1,5 @@
 syntax on
+color delek
 
 set undodir=~/.vim/undodir
 set undofile
