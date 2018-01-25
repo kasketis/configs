@@ -214,9 +214,10 @@ function help()
     echo "git aliases"
     echo "-----------"
     echo " add\n commit\n clone\n checkout\n deploy\n diff\n info\n log\n merge\n push\n pull\n status"
+    echo
     echo "docker aliases"
     echo "-----------"
-    echo " dkls\n dkst\n dkrm"
+    echo " dkls\n dkst\n dkrm\n dkex"
     echo
     echo "functions"
     echo "---------"
