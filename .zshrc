@@ -36,6 +36,7 @@ alias status='git status'
 alias dkls='docker ps -a'
 alias dkst='docker stop $(docker ps -aq)'
 alias dkrm='docker rm $(docker ps -aq)'
+alias dkex='docker exec -it'
 
 # suffix alias
 alias -s html=vim
