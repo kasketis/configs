@@ -37,6 +37,7 @@ alias dkls='docker ps -a'
 alias dkst='docker stop $(docker ps -aq)'
 alias dkrm='docker rm $(docker ps -aq)'
 alias dkex='docker exec -it'
+alias dklo='docker logs'
 
 # suffix alias
 alias -s html=vim
@@ -217,7 +218,7 @@ function help()
     echo
     echo "docker aliases"
     echo "-----------"
-    echo " dkls\n dkst\n dkrm\n dkex"
+    echo " dkls\n dkst\n dkrm\n dkex\n dklo"
     echo
     echo "functions"
     echo "---------"
