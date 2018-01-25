@@ -32,6 +32,11 @@ alias push='git push'
 alias pull='git pull'
 alias status='git status'
 
+# docker aliases
+alias dkls='docker ps -aq'
+alias dkst='docker stop $(docker ps -aq)'
+alias dkrm='docker rm $(docker ps -aq)'
+
 # suffix alias
 alias -s html=vim
 alias -s php=vim
