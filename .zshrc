@@ -33,7 +33,7 @@ alias pull='git pull'
 alias status='git status'
 
 # docker aliases
-alias dkls='docker ps -aq'
+alias dkls='docker ps -a'
 alias dkst='docker stop $(docker ps -aq)'
 alias dkrm='docker rm $(docker ps -aq)'
 
